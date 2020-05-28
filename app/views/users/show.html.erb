@@ -1,0 +1,66 @@
+<div class="main">
+  <div class="main-item user-show">
+    <div class="user-icon">
+      <% if @user.user_img? %>
+        <%= image_tag "#{@user.user_img}" %>
+      <% else %>
+        <%= image_tag "/assets/default.jpg" %> 
+      <% end %>
+    </div>
+    <div class="item-name user-icon-name">
+      <%= @user.name %> 
+    </div>
+    <div class="user-info">
+      <% if @user.gender == 0 %>
+        男
+      <% else %>
+        女
+      <% end %>
+      <%=  @user.age %>歳
+      <%=  @user.height %>cm
+      <%=  @user.weight %>kg
+    </div>
+    <% if @user.id == @current_user.id  %>
+      <%= link_to "編集", "/users/#{@user.id}/edit", class: "user-edit" %>
+    <% end %>
+  </div>
+  <div class="container-show">
+    <% @posts.each do |post| %>
+      <!--各投稿-->
+      <div class="content-index">
+        <%= link_to "/posts/#{post.id}" do %>
+          <!--menuは必須-->
+          <%= post.menu %>
+          <!--あれば表示-->
+          <% if post.gram %>
+            <%= post.gram %>g
+          <% end %>
+          <% if post.calorie %>
+            <%= post.calorie %>kcal
+          <% end %>
+          <% if post.protein %>
+            P <%= post.protein %>g
+          <% end %>
+          <% if post.fat %>
+            F <%= post.fat %>g
+          <% end %>
+          <% if post.carb %>
+            C <%= post.carb%>g
+          <% end %>
+          <!--目的は必須-->
+          <% if post.purpose == 0 %>
+            増量
+          <% elsif post.purpose == 1 %>
+            維持
+          <% else %>
+            減量    
+          <% end %>
+          <% if post.image? %>
+            <%= image_tag "#{post.image}", class: "post-img" %>
+          <% end %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+  
+</div>  

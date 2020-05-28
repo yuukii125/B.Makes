@@ -1,0 +1,277 @@
+// 各CSS読み込み
+@import"home";
+@import"posts";
+@import"users";
+
+// font-awesome読み込み
+@import "font-awesome-sprockets";
+@import "font-awesome";
+
+// 変数宣言
+$main_color: white;  //文字の色は基本白
+
+* {
+  box-sizing: border-box;
+  text-decoration: none;
+}
+
+body {
+  margin: 0;
+  background-color: rgb(241, 241, 229);
+}
+
+// ヘッダー
+header {
+  background-color: black;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  width: 100%;
+}
+
+.inner {
+  max-width: 1200px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
+}
+
+header img {
+  padding-left: 5px;
+  width: 150px;
+  height: 70px;
+}
+
+.nav ul {
+  margin: 0;
+}
+
+i {
+  margin-right: 3px;
+}
+
+.nav-item {
+  list-style: none;
+  float: left;
+  margin-right: 15px;
+  color: $main_color;
+}
+
+.nav-item:hover {
+  opacity: 0.5;
+  cursor: pointer;
+}
+
+.nav-item a {
+  color: $main_color;
+  display: inline-block;
+}
+
+// メッセージ
+.flash {
+  width: 100%;
+  position:absolute;
+  top: 70px;
+  left: 0px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  text-align: center;
+  background-color: red;
+  color: $main_color;
+  z-index: 5;
+}
+
+
+// 投稿、ユーザー共通
+.main {
+    max-width: 600px;
+    margin: 0 auto;
+    margin-top: 150px;
+    margin-bottom: 200px;
+}
+
+.main-item {
+    background-color: $main_color;
+    box-shadow: 1px 0 5px 1px #999;
+    padding: 5px;
+    font-size: 13px;
+    width: 600px;
+}
+
+.main-item a {
+  color: black;
+}
+// 必須項目
+span {
+    font-size: 10px;
+    margin-left: 5px;
+    padding: 1px;
+    color: $main_color;
+    background-color: $attention_color;
+    border-radius: 5px;
+}
+
+// 登録・投稿ボタン
+.btn {
+  background-color: skyblue;
+  color: $main_color;
+  margin-top: 5px;
+  padding: 8px;
+  border-radius: 30px;
+  border: none;
+  outline: none;
+}
+
+.btn:hover {
+  cursor: pointer;
+  opacity: 0.7;
+}
+
+// フッター
+footer {
+  background-color: black;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 5;
+  width: 100%;
+}
+
+footer p {
+  color: $main_color;
+  text-align: center;
+} 
+
+@media screen and (min-width: 768px) {
+  .hamburger, .black-bg {
+    display: none;
+  }
+}
+
+@media(max-width: 767px){
+  .nav {
+    position: fixed;
+    right: -375px; 
+    top: 0;
+    width: 300px; 
+    height: 100vh;
+    padding-top: 40px;
+    background-color: rgba(255, 255, 255, 0.7);
+    transition: all .6s;
+    z-index: 200;
+    overflow-y: auto; /* メニューが多くなったらスクロールできるように */
+  }
+  
+  .hamburger {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    width: 50px; 
+    height: 52px; 
+    cursor: pointer;
+    z-index: 300;
+    background-color: rgba(255, 255, 255, 0.4);
+  }
+  
+  .nav-list {
+    margin: 0;
+    padding: 35px 0 0 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .nav-item {
+    text-align: center;
+    padding: 0 14px;
+    color: black;
+  }
+  
+  .nav-item a {
+    display: block;
+    padding-top: 10px;
+    border-bottom: 1px solid #eee;
+    text-decoration: none;
+    color: #111;
+  }
+  
+  .nav-item a:hover {
+    background-color: #eee;
+  }
+  
+  .hamburger-line {
+    position: absolute;
+    left: 6px;
+    width: 30px;
+    height: 1px;
+    background-color: $main_color;
+    transition: all .6s;
+  }
+  
+  .hamburger-line--1 {
+    top: 15px;
+  }
+  
+  .hamburger-line--2 {
+    top: 28px;
+  }
+  
+  .hamburger-line--3 {
+    top: 41px;
+  }
+  
+  .black-bg {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 100;
+    background-color: #000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all .6s;
+    cursor: pointer;
+  }
+  /* 表示されたとき */
+  .nav-open .nav {
+    right: 0;
+  }
+  
+  .nav-open .black-bg {
+    opacity: .8;
+    visibility: visible;
+  }
+  
+  .nav-open .hamburger-line--1 {
+    transform: rotate(45deg);
+    top: 25px;
+  }
+  
+  .nav-open .hamburger-line--2 {
+    width: 0;
+    left: 50%;
+  }
+  
+  .nav-open .hamburger-line--3 {
+    transform: rotate(-45deg);
+    top: 25px;
+  }
+  
+    // 投稿全体
+  .main {
+  max-width: 300px;
+  margin: 0 auto;
+  margin-top: 150px;
+  margin-bottom: 150px;
+  }
+  // 各投稿
+  .main-item {
+  width: 300px;
+  margin: 0 auto;
+  }
+
+}
+

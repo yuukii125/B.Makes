@@ -1,0 +1,39 @@
+<div class="main users-edit">
+  <div class="main-item">
+    <%= form_with url: "/users/#{@user.id}", method: :patch, local: true do |f| %>
+      <div class="form">
+        <div class="field">
+          <p><%= f.label :name, "ニックネーム*" %></p>
+          <%= f.text_field :name, value: @user.name %>
+        </div>
+        <div class="field">
+          <p><%= f.label :user_img, "プロフィール画像" %></p>
+          <%= f.file_field :user_img, value: @user.user_img %>
+        </div>
+        <div class="field">
+          <p><%= f.label :email, "メールアドレス*" %></p>
+          <%= f.email_field :email, value: @user.email  %>
+        </div>
+        <div class="field">
+          <p><%= f.label :gender, "性別*" %></p>
+          <%= f.radio_button :gender, 0 %>男
+          <%= f.radio_button :gender, 1 %>女
+        </div>
+        <div class="field">
+          <p><%= f.label :age, "年齢*", min: 0 %></p>
+          <%= f.number_field :age, value: @user.age %>歳
+        </div>
+        <div class="field">
+          <p><%= f.label :height, "身長*", min: 0 %></p>
+          <%= f.number_field :height, value: @user.height, step: "0.1" %>cm
+        </div>
+        <div class="field">
+          <p><%= f.label :weight, "体重*", min: 0 %></p>
+          <%= f.number_field :weight, value: @user.weight, step: "0.1" %>kg
+        </div>
+        <%= f.submit "編集する", :class=>"btn" %>
+      </div>
+    <% end %>
+    <%= link_to "アカウント削除", user_path(@user), method: :delete, class: "user-delete", data: {confirm: "削除しますか？"} %>
+  </div>
+</div>

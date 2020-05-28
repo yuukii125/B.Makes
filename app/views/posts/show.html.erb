@@ -1,0 +1,63 @@
+<div class="main posts-show">
+  <div class="main-item left-profile">
+  <div class="img">
+    <% if @user.user_img? %>
+      <%= image_tag "#{@user.user_img}" %>
+    <% else %>
+      <%= image_tag "/assets/default.jpg" %> 
+    <% end %>
+  </div>
+    <div class="post-item">
+      <div class="item-name">
+        <%= link_to @user.name, "/users/#{@user.id}" %> 
+      </div>
+      <div class="content">
+        <!--menuは必須-->
+        <%= @post.menu %>
+        <!--あれば表示-->
+        <% if @post.gram %>
+          <%= @post.gram %>g
+        <% end %>
+        <% if @post.calorie %>
+          <%= @post.calorie %>kcal
+        <% end %>
+        <% if @post.protein %>
+          P <%= @post.protein %>g
+        <% end %>
+        <% if @post.fat %>
+          F <%= @post.fat %>g
+        <% end %>
+        <% if @post.carb %>
+          C <%= @post.carb%>g
+        <% end %>
+        <!--目的は必須-->
+        <% if @post.purpose == 0 %>
+          増量
+        <% elsif @post.purpose == 1 %>
+          維持
+        <% else %>
+          減量
+        <% end %>
+        <% if @post.image? %>
+          <%= image_tag "#{@post.image}", class: "post-img"  %>
+        <% end %>
+      </div>
+      <!--いいね-->
+      <% if @current_user.likes.find_by(post_id: @post.id) %>
+        <%= link_to unlike_path(@post), method: :delete, remote: true do %>
+          <i class="fas fa-thumbs-up like-btn-unlike"></i>
+        <% end %>
+      <% else %>
+        <%= link_to like_path(@post), method: :post, remote: true do %>
+          <i class="fas fa-thumbs-up like-btn"></i>
+        <% end %>
+      <% end %>
+      <!--いいねの数-->
+      <%= @likes_count %>
+    
+      <% if @user.id == @current_user.id %>
+        <%= link_to "投稿を削除", post_path(@post), method: :delete, class: "post-delete", data: {confirm: "削除しますか？"}  %>
+      <% end %>
+    </div>
+  </div>
+</div>    

@@ -1,0 +1,32 @@
+<div class="main users-index">
+  <div class="container">
+    <!--ユーザーを取り出す-->
+    <% @users.each do |user| %>
+      <div class="main-item user-profile">
+        <div class="img">
+          <%= link_to user_path(user) do %>
+            <% if user.user_img? %>
+              <%= image_tag "#{user.user_img}" %>
+            <% else %>
+              <%= image_tag "/assets/default.jpg" %> 
+            <% end %>
+          <% end %>
+        </div>
+        <div class="item-name user_name">
+          <%= link_to "/users/#{user.id}" do %>
+            <%= user.name %><br>
+            <% if user.gender == 0 %>
+              男
+            <% else %>
+              女
+            <% end %>
+            <%= user.age %>歳
+            <%= user.height %>cm
+            <%= user.weight %>kg
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+

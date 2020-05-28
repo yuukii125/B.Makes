@@ -1,0 +1,36 @@
+<div class="main search_page">
+  <div class="main-item">
+    <!--ransackを使った検索-->
+    <%= search_form_for @q, url: "/posts" do |f| %>
+      <div class="form">
+        <div class="field">
+          <p><%= f.label :purpose, "目的" %></p>
+          <%= f.radio_button :posts_purpose_eq, 0 %>増量
+          <%= f.radio_button :posts_purpose_eq, 1 %>維持
+          <%= f.radio_button :posts_purpose_eq, 2 %>減量
+        </div>
+        <div class="field">
+          <p><%= f.label :gender, "性別" %></p>
+          <%= f.radio_button :gender_eq, 0 %>男
+          <%= f.radio_button :gender_eq, 1 %>女
+        </div>
+        <div class="field">
+          <p><%= f.label :age, "年齢" %></p>
+          <%= f.number_field :age_gteq %>歳以上
+          <%= f.number_field :age_lt %>歳未満
+        </div>
+        <div class="field">
+          <p><%= f.label :height, "身長" %></p>
+          <%= f.number_field :height_gteq %>cm以上
+          <%= f.number_field :height_lt %>cm未満
+        </div>
+        <div class="field">
+          <p><%= f.label :weight, "体重" %></p>
+          <%= f.number_field :weight_gteq %>kg以上
+          <%= f.number_field :weight_lt %>kg未満
+        </div>
+        <%= f.submit "検索する", :class=> "btn"  %>
+      </div>
+    <% end %>
+  </div>
+</div>

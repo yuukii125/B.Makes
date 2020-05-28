@@ -1,0 +1,46 @@
+<div class="main users-new">
+	<div class="main-item">
+		<%= form_with url: "/users" do |f| %>
+			<div class="form">
+				<div class="field">
+					<p><%= f.label :name, "ニックネーム(10文字以内)*" %></p>
+					<%= f.text_field :name, value: @name%>
+				</div>
+				<div class="field">
+					<p><%= f.label :user_img, "プロフィール画像" %></p>
+					<%= f.file_field :user_img %>
+				</div>
+				<div class="field">
+					<p><%= f.label :email, "メールアドレス*" %></p>
+					<%= f.email_field :email, value: @email %>
+				</div>
+				<div class="field">
+					<p><%= f.label :password, "パスワード(6文字以上)*" %></p>
+					<%= f.password_field :password %>
+				</div>
+				<div class="field">
+					<p><%= f.label :password_confirmation, "パスワード確認*" %></p>
+					<%= f.password_field :password_confirmation %>
+				</div>
+				<div class="field">
+					<p><%= f.label :gender, "性別*" %></p>
+					<%= f.radio_button :gender, 0 %>男
+					<%= f.radio_button :gender, 1 %>女
+				</div>
+				<div class="field">
+					<p><%= f.label :age, "年齢*", min: 0 %></p>
+					<%= f.number_field :age, value: @age %>歳
+				</div>
+				<div class="field">
+					<p><%= f.label :height, "身長*", min: 0 %></p>
+					<%= f.number_field :height, value: @height, step: "0.1" %>cm
+				</div>
+				<div class="field">
+					<p><%= f.label :weight, "体重*", min: 0 %></p>
+					<%= f.number_field :weight, value: @weight, step: "0.1" %>kg
+				</div>
+				<%= f.submit "新規登録する", :class=>"btn" %>
+			</div>
+		<% end %>
+	</div>
+</div>

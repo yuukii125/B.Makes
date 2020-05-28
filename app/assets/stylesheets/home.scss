@@ -1,0 +1,68 @@
+// 変数宣言
+$main_color: white;  //文字の色は基本白
+
+// HOMEページ
+.home {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url("/bg-main.jpg");
+    background-size: cover;
+    height: 100vh;
+}
+
+.home-msg {
+    color:$main_color;
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
+.home h1 {
+    font-size: 3em;
+}
+
+.buttons {
+    display: flex;
+}
+
+
+
+.button {
+    background-color: 	rgba(139, 211, 198, 0.9);
+    margin-right: 20px;
+    border-radius: 10px;
+}
+
+.start-button, .about-button {
+    color: $main_color;
+    display: block;
+    padding: 15px;
+}
+
+.start-button:hover {
+    opacity: 0.5;
+}
+.about-button:hover {
+    opacity: 0.5;
+}
+
+
+//ABOUTページ
+.info-png {
+    border-radius: 0;
+    width: 600px;
+    height:500px;
+}
+
+
+@media screen and (max-width: 767px) {
+    .home h1 {
+        font-size: 2em;
+    }
+    .info-png {
+        width: 300px;
+        height:200px;
+    }
+    
+}

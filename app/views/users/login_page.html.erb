@@ -1,0 +1,17 @@
+<div class="main users-login">
+  <div class="main-item">
+    <%= form_with url: "/login", local: true do |f| %>
+      <div class="form">
+        <div class="field">
+          <p><%= f.label :email, "メールアドレス" %></p>
+          <%= f.email_field :email, value: "test@gmail.com" %>
+        </div>
+        <div class="field">
+          <p><%= f.label :password, "パスワード" %></p>
+          <%= f.password_field :password value: "testuser"%>
+        </div>
+        <%= f.submit "ログイン", :class=>"btn" %>
+      </div>
+    <% end %>
+  </div>
+</div>

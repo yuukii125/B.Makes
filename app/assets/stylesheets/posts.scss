@@ -1,0 +1,108 @@
+// 変数宣言
+$main_color: white;  //文字の色は基本白
+$attention_color: red; //注意書きは赤
+
+.left-profile {
+    display: flex;
+    align-items: center; 
+}
+
+.content {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.item-name {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-size: 15px;
+}
+
+.pic {
+    text-align: left;
+}
+
+.post-img {
+  height: 100px;
+  width: 140px;
+  margin-top: 5px;
+  margin-left: 0;
+  border: 1px solid #ccc;
+  border-radius: 0;
+}
+
+.post-delete {
+    border: 1px solid #999;
+    padding: 2px;
+    margin-left: 70px;
+}
+.post-delete:hover{
+    opacity: 0.7;
+}
+
+.form {
+  width: 600px;
+}
+
+.meal-date {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 10px;
+}
+
+.menu-p, .gram-p, .fat-p, .purpose-p {
+    line-height: 40px;
+}
+  
+.calorie-p, .protein-p,.carb-p{
+  line-height: 20px;
+}
+
+.menu input {
+  width: 90px;
+}
+.gram input, .calorie input, .protein input, .fat input, .carb input {
+  width: 50px
+}
+
+.search-date {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+}
+
+// いいね
+.like-btn {
+  color: #8899;
+}
+
+.like-btn-unlike {
+  color: red;
+}
+
+@media screen and (min-width: 768px){
+  .meal-nurtrition {
+    display: flex;
+    justify-content: space-around;
+  }
+}
+
+@media screen and (max-width: 767px){
+  .meal-date {
+    display: flex;
+    flex-direction: row;
+    padding: 5px;
+    align-items: center;
+    width: 230px;
+    justify-content: space-between;
+  }
+  .menu-p, .gram-p, .calorie-p, .protein-p, .fat-p, .carb-p, .purpose-p {
+    margin-right: 25px;
+  }
+  textarea {
+  height: 10em;
+  width: 290px;
+  line-height: 1.5em;
+  }
+}

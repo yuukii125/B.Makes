@@ -1,0 +1,56 @@
+<div class="main posts-index">
+  <div class="container">
+    <% @search_results.each do |result| %>
+      <!--各投稿-->
+      <div class="main-item left-profile">
+        <div class="img">
+          <%= link_to "/posts/#{result.id}" do %>
+            <% if result.user_img? %>
+              <%= image_tag "#{result.user_img}" %>
+            <% else %>
+              <%= image_tag "/assets/default.jpg" %> 
+            <% end %>
+          <% end %>
+        </div>
+          <div class="post-item">
+            <div class="item-name ">
+              <%= result.name %>
+            </div>
+            <div class="content">
+              <%= link_to "/posts/#{result.id}" do %>
+                <!--menuは必須-->
+                <%= result.menu %>
+                <!--あれば表示-->
+                <% if result.gram %>
+                  <%= result.gram %>g
+                <% end %>
+                <% if result.calorie %>
+                  <%= result.calorie %>kcal
+                <% end %>
+                <% if result.protein %>
+                  P <%= result.protein %>g
+                <% end %>
+                <% if result.fat %>
+                  F <%= result.fat %>g
+                <% end %>
+                <% if result.carb %>
+                  C <%= result.carb%>g
+                <% end %>
+                <!--目的は必須-->
+                <% if result.purpose == 0 %>
+                  増量
+                <% elsif result.purpose == 1 %>
+                  維持
+                <% else %>
+                  減量
+                <% end %>
+                <% if result.image? %>
+                  <%= image_tag "/uploads/posts_images/#{result.image}", class: "post-img" %>
+                <% end %>
+              <% end %>
+            </div>
+          </div>
+      </div>
+    <% end %>
+  </div>
+</div>

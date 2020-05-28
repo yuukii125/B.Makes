@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <title>B.Makes</title>
+    <%= favicon_link_tag('favicon.ico') %>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+<body>
+<header>
+  <div class="inner">
+    <div class="header-logo">
+      <%= link_to image_tag("/header-logo.png"), "/" %>
+    </div>
+    <nav class="nav">
+      <ul class="nav-list">
+        <%if @current_user %>
+          <li class="nav-item">
+            <%= link_to  "/users/#{@current_user.id}" do %>
+              <i class="fas fa-user-circle"></i><%= @current_user.name %>
+            <% end  %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "/search_page" do %>
+              <i class="fas fa-search"></i>検索
+            <% end %>
+          </li>
+          <li class="nav-item"><%= link_to_unless_current "新規投稿", "/posts/new" %></li>
+          <li class="nav-item"><%= link_to "投稿一覧", "/posts" %></li>
+          <li class="nav-item"><%= link_to_unless_current "ユーザー一覧", "/users" %></li>
+          <li class="nav-item"><%= link_to "ログアウト", "/logout", method: :post%></li>
+        <% else  %>
+          <li class="nav-item"><%= link_to_unless_current "HOME", "/" %></li>
+          <li class="nav-item"><%= link_to_unless_current "ABOUT", "/about" %></li>
+          <li class="nav-item"><%= link_to_unless_current "新規登録", "/users/new" %></li>
+          <li class="nav-item"><%= link_to_unless_current "ログイン", "/login" %></li>
+        <% end %>
+      </ul>
+    </nav>
+    <div class="hamburger" id="js-hamburger">
+      <span class="hamburger-line hamburger-line--1"></span>
+      <span class="hamburger-line hamburger-line--2"></span>
+      <span class="hamburger-line hamburger-line--3"></span>
+    </div>
+    <div class="black-bg" id="js-black-bg"></div>
+  </div>
+<!--フラッシュメッセージ-->
+<% if flash[:notice] %>
+  <div class="flash">
+    <%= flash[:notice] %>
+  </div>
+<% end %>
+</header>
+    
+<%= yield %>
+    
+<footer>
+    <p>&copy;2020 B.Makes All.Rights Reserved.</p>
+</footer>
+
+<script>
+  function toggleNav() {
+  var body = document.body;
+  var hamburger = document.getElementById('js-hamburger');
+  var blackBg = document.getElementById('js-black-bg');
+
+  hamburger.addEventListener('click', function() {
+    body.classList.toggle('nav-open');
+  });
+  blackBg.addEventListener('click', function() {
+    body.classList.remove('nav-open');
+  });
+}
+toggleNav();
+</script>
+</body>
+</html>

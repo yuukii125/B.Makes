@@ -1,0 +1,43 @@
+<div class="main posts-new">
+  <div class="main-item">
+    <%= form_with url: "/posts" do |f| %>
+      <div class="form">
+        <div class="meal-nurtrition">
+          <div class="meal-date menu">
+            <%= f.label :menu, "メニュー*", :class=>"menu-p"%>
+            <%= f.text_field :menu %>
+          </div>
+          <div class="meal-date gram">
+            <%= f.label :gram, "容量(g)", :class=>"gram-p" %>
+            <%= f.number_field :gram, step: "0.1" %>
+          </div>
+          <div class="meal-date calorie">
+            <%= f.label :calorie, "カロリー(kcal)", min: 0, :class=>"calorie-p" %>
+            <%= f.number_field :calorie, step: "0.1" %>
+          </div>
+          <div class="meal-date protein">
+            <%= f.label :protein, "タンパク質(g)",  min: 0, :class=>"protein-p" %>
+            <%= f.number_field :protein, step: "0.1" %>
+          </div>
+          <div class="meal-date fat">
+            <%= f.label :fat, "脂質(g)", min: 0, :class=>"fat-p" %>
+            <%= f.number_field :fat, step: "0.1" %>
+          </div>
+          <div class="meal-date carb">
+            <%= f.label :carb, "炭水化物(g)", min: 0, :class=>"carb-p" %>
+            <%= f.number_field :carb, step: "0.1" %>
+          </div>
+          <div class="meal-date purpose">
+            <%= f.label :purpose, "目的*", :class=>"purpose-p" %>
+            <%= f.select :purpose, [["増量", 0],["維持", 1],["減量", 2]], prompt: "選択してください" %>
+          </div>
+        </div>
+        <div>
+          <%= f.label :image, "写真" %>
+          <%= f.file_field :image %>
+        </div>
+        <%= f.submit "投稿する", :class=>"btn" %>
+      </div>
+    <% end %> 
+  </div>
+</div>
