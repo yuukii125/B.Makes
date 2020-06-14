@@ -18,9 +18,6 @@ ransack
 ## URL
 https://b-makes.herokuapp.com
 
-ログイン画面にあらかじめメールアドレス・パスワードを入力しています
-ログインボタンを押してもらえると、ログインできます
-
 メールアドレス：test@gmail.com
 パスワード：testuser
 
