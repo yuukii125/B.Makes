@@ -34,15 +34,15 @@ class PostsController < ApplicationController
   end
   # 新規投稿されたとき
   def create
-    @post = Post.new(menu: params[:menu],
-                     gram: params[:gram],
-                     calorie: params[:calorie],
-                     protein: params[:protein],
-                     fat: params[:fat],
-                     carb: params[:carb],
-                     image: params[:image],
-                     purpose: params[:purpose],
-                     user_id: @current_user.id
+    @post = Post.new( menu: params[:menu],
+                      gram: params[:gram],
+                      calorie: params[:calorie],
+                      protein: params[:protein],
+                      fat: params[:fat],
+                      carb: params[:carb],
+                      image: params[:image],
+                      purpose: params[:purpose],
+                      user_id: @current_user.id
                     )
     # 保存できたらメッセージと投稿一覧ページへ
     if @post.save
